@@ -26,6 +26,9 @@ namespace GameHub.Data.Sources.EpicGames
 	public class EpicGames: GameSource
 	{
 		public static EpicGames instance;
+
+		private bool? installed = null;
+		public File? legendary_executable = null;
 		
 		public override string id { get { return "epicgames"; } }
 		public override string name { get { return "EpicGames"; } }
@@ -54,8 +57,33 @@ namespace GameHub.Data.Sources.EpicGames
 
 		public override bool is_installed(bool refresh)
 		{
-			debug("[EpicGames] is_installed: NOT IMPLEMENTED");
-			return true;
+			/*
+			Epic games depends on
+			*/
+			if(installed != null && !refresh)
+			{
+				return (!) installed;
+			}
+
+			//check if legendary exists
+			var legendary = Utils.find_executable("legendary");
+
+			if(legendary == null || !legendary.query_exists())
+			{
+				debug("[EpicGames] is_installed: Legendary not found");
+				
+			}
+			else
+			{
+				debug("[EpicGames] is_installed: LegendaryYES");
+			}
+
+			legendary_executable = legendary;
+
+			installed = legendary_executable != null && legendary_executable.query_exists();
+
+			return (!) installed;
+
 		}
 
 		public override async bool install()

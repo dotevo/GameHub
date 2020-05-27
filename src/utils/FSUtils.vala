@@ -41,6 +41,7 @@ namespace GameHub.Utils
 				public string humble_games { get; set; }
 				public string itch_home { get; set; }
 				public string itch_games { get; set; }
+				public string epic_games { get; set; }
 
 				public Settings()
 				{
@@ -134,6 +135,11 @@ namespace GameHub.Utils
 				public const string ButlerRoot = FSUtils.Paths.Itch.Repo + "/butler";
 				public const string ButlerCurrentVersion = FSUtils.Paths.Itch.ButlerRoot + "/.chosen-version";
 				public const string ButlerExecutable = FSUtils.Paths.Itch.ButlerRoot + "/versions/%s/butler";
+			}
+
+			public class Epic
+			{
+				public static string Games { owned get { return FSUtils.Paths.Settings.instance.epic_games; } }
 			}
 
 			public class Collection: GameHub.Settings.SettingsSchema

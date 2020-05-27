@@ -133,4 +133,29 @@ namespace GameHub.Settings.Auth
 			}
 		}
 	}
+
+	public class Epic: SettingsSchema
+	{
+		public bool enabled { get; set; }
+		public bool authenticated { get; set; }
+		public string auth_code { get; set; }
+
+		public Epic()
+		{
+			base(ProjectConfig.PROJECT_NAME + ".auth.epic");
+		}
+
+		private static Epic? _instance;
+		public static unowned Epic instance
+		{
+			get
+			{
+				if(_instance == null)
+				{
+					_instance = new Epic();
+				}
+				return _instance;
+			}
+		}
+	}
 }

@@ -199,6 +199,21 @@
 			</key>
 		</schema>
 
+		<schema path="@SCHEMA_PATH@/auth/epic/" id="@SCHEMA_ID@.auth.epic">
+			<key name="enabled" type="b">
+				<default>true</default>
+				<summary>Is Epic enabled</summary>
+			</key>
+			<key name="authenticated" type="b">
+				<default>false</default>
+				<summary>Did user get authentication code</summary>
+			</key>
+			<key name="auth-code" type="s">
+				<default>'@PREF_AUTH_CODE_EPIC@'</default>
+				<summary>Epic AUTH CODE</summary>
+			</key>
+		</schema>
+
 	<!-- Paths -->
 		<schema path="@SCHEMA_PATH@/paths/" id="@SCHEMA_ID@.paths">
 			<key name="steam-home" type="s">
@@ -220,6 +235,10 @@
 			<key name="itch-games" type="s">
 				<default>'~/Games/itch'</default>
 				<summary>itch.io games directory</summary>
+			</key>
+			<key name="epic-games" type="s">
+				<default>'~/Games/epic'</default>
+				<summary>Epic games directory</summary>
 			</key>
 		</schema>
 
